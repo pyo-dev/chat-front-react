@@ -30,11 +30,11 @@ npm create vite@latest
 
 ## DevDependencies: 개발 환경에서만 사용되는 패키지들입니다.
 ### 기본
-- @eslint/js '9.19.0'
+- @eslint/js '9.19.0'	
 	JavaScript 코드의 품질을 검사하고, 스타일을 통일하는 ESLint의 공식 패키지입니다.
-- @types/react '19.0.8'
+- @types/react `19.0.8`
 	TypeScript에서 React의 타입 정의를 제공하는 패키지입니다.
-- @types/react-dom '19.0.3'
+- @types/react-dom `19.0.3`	
 	TypeScript에서 ReactDOM을 사용할 때 필요한 타입 정의 파일입니다.
 - @vitejs/plugin-react '4.3.4'
 	Vite에서 React를 사용하기 위한 플러그인입니다. React 애플리케이션을 빠르게 빌드할 수 있게 돕습니다
