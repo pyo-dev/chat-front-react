@@ -1,0 +1,124 @@
+@use "sass:list";
+@use "sass:map";
+
+// assets
+$pyo-shodow-1: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(64, 64, 64, .4);
+.ex-box-style{
+	border-radius: 15px;
+	background-color: #fff;
+	box-shadow: $pyo-shodow-1;
+}
+.ex-panel-line {
+	position: relative;
+	border-bottom: 1px solid rgba($color: white, $alpha: 0.03);
+	&::after{
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		border-top: 1px solid rgba($color: black, $alpha: 0.07);
+		border-bottom: 1px solid rgba($color: black, $alpha: 0.07);
+		background-color: rgba($color: black, $alpha: 0.03);
+	}
+}
+//// assets
+
+// reset
+html,
+body {
+	overflow: hidden;
+	height: 100%;
+}
+
+#root{
+	width: 100%;
+	height: 100%;
+}
+button{
+	cursor: pointer;
+}
+//// reset
+
+.pyo{
+	&-wrap{
+		position: relative;
+		overflow: auto;
+		display: flex;
+		align-items: flex-start;
+		gap: 15px;
+		width: 100%;
+		height: 100%;
+		padding: 15px;
+		background-color: #EEF0F3;
+	}
+	&-header{
+		position: sticky;
+		top: 0;
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: column;
+		width: 220px;
+		min-height: 100%;
+		background-image: linear-gradient(195deg, #42424a, #191919);
+		@extend .ex-box-style;
+		.logo{
+			padding: 20px;
+			font-size: 24px;
+			font-weight: bold ;
+			color: #fff;
+			text-align: center;
+			@extend .ex-panel-line;
+		}
+		.profile{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+			padding: 20px;
+			@extend .ex-panel-line;
+			.img{
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				border: 2px solid rgba($color: white, $alpha: 0.5);
+				background-color: #fff;
+				background-size: cover;
+			}
+			.info{
+				font-size: 12px;
+				color: #aaa;
+			}
+		}
+		.nav{
+			padding: 15px;
+			@extend .ex-panel-line;
+			.title{
+				padding: 5px 10px;
+				font-size: 12px;
+				color: rgba($color: white, $alpha: 0.5);
+			}
+			&.last{
+				margin-top: auto;
+				border-top: 1px solid rgba($color: white, $alpha: 0.03);
+				&::after{
+					top: -2px;
+					bottom: auto;
+				}
+			}
+		}
+	}
+	&-contents{
+		flex: 1;
+		min-width: 1000px;
+		min-height: 100%;
+	}
+	&-panel{
+		@extend .ex-box-style;
+		padding: 15px;
+	}
+}

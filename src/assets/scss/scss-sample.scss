@@ -1,0 +1,42 @@
+@use "sass:list";
+@use "sass:map";
+
+$PYO-point-color1: (
+	#0068FF,
+	#6200EE,
+	#06C755,
+	#FFB624,
+	#E62A10,
+);
+
+$PYO-point-color2: (
+	primary: #0068FF,
+	secondary: #6200EE,
+	success: #06C755,
+	warning: #FFB624,
+	danger: #E62A10,
+);
+
+.scss-loop1 {
+	display: flex;
+	@each $color in $PYO-point-color1 {
+		$index: list.index($PYO-point-color1, $color);
+		.color-#{$index} {
+			background-color: $color;
+		}
+	}
+}
+
+.scss-loop2 {
+	display: flex;
+	@each $key, $color in $PYO-point-color2 {
+		.color-#{$key} {
+			background-color: $color;
+		}
+	}
+}
+
+.scss-test {
+	background-color: list.nth($PYO-point-color1, 3);
+	color: map.get($PYO-point-color2, danger);
+}

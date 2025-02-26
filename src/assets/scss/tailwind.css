@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.tailwind-test{
+	@apply text-lg
+		font-bold
+		bg-black
+		text-white
+	;
+}
