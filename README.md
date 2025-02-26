@@ -30,6 +30,10 @@ npm create vite@latest
 
 ## DevDependencies: 개발 환경에서만 사용되는 패키지들입니다.
 ### 기본
+
+- @eslint/js: `^9.17.0`	
+	코드 품질을 유지하고 오류를 방지하기 위한 정적 코드 분석 도구.
+
 - @eslint/js '9.19.0'	
 	JavaScript 코드의 품질을 검사하고, 스타일을 통일하는 ESLint의 공식 패키지입니다.
 - @types/react `19.0.8`
