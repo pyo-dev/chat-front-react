@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { PyoAxios } from '@/axios/PyoAxios';
+import { LoginAc } from '@/utils/auth';
 import { LayoutDesign } from "@/layout/LayoutDesign";
 import { PyoButton } from "@/components/PyoButton";
 
@@ -10,34 +10,12 @@ export const Login = () => {
 	const [userId, setUserId] = useState("");
 	const [userPassword, setUserPassword] = useState("");
 
-	const LoginAc = async () => {
-		let reqData = {
+	const handleLogin = () => {
+		let userData = {
 			id: userId,
 			password: userPassword,
 		};
-
-	
-		if (!userId.trim()) {
-			alert("아이디를 입력해 주세요");
-			return false;
-		}
-		if (!userPassword.trim()) {
-			alert("비밀번호를 입력해 주세요");
-			return false;
-		}
-
-		await PyoAxios.post('signIn.php', reqData)
-		.then((response) => {
-			if(response.data.success){
-				sessionStorage.setItem('access_token', response.data.access_token);
-				navigate('/');
-			} else {
-				alert(response.data.message);
-			}
-		})
-		.catch((err) => {
-			console.error('API 오류:', err);
-		});
+		LoginAc({userData, navigate});
 	}
 
 	return (
@@ -67,7 +45,7 @@ export const Login = () => {
 				/>
 			</div>
 			<div className="mt-12 flex gap-2">
-				<PyoButton lmType="line" lmEvent={() => {LoginAc()}}>Login</PyoButton>
+				<PyoButton pyoType="line" pyoEvent={handleLogin}>Login</PyoButton>
 				<PyoButton to="/signup">Sign Up</PyoButton>
 			</div>
 		</LayoutDesign>

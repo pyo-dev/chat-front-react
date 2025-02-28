@@ -1,35 +1,27 @@
 import { useNavigate } from 'react-router-dom';
-import { PyoAxios } from '@/axios/PyoAxios';
+import { getUserInfo, LogOutAc } from '@/utils/auth';
 import { PyoNavButton } from '@/components/PyoNavButton';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 export const Header = () => {
-	const navigate = useNavigate(); // useNavigate 훅을 사용하여 리디렉션 처리
-
+	const navigate = useNavigate();
+	
 	const [userInfo, setUserInfo] = useState({});
 
-	const getInfo = async () => {
-		await PyoAxios.get('getUserInfo.php')
-		.then((response) => {
-			if(response.data.success){
-				setUserInfo(response.data.data);
-			} else {
-				alert(response.data.message);
-			}
-		})
-		.catch((err) => {
-			console.error('API 오류:', err);
-		});
-	}
+	const fetchUserInfo = async () => {
+		const data = await getUserInfo();
+		if (data) {
+			setUserInfo(data);
+		}
+	};
 
-	const logOutAc = () => {
-		sessionStorage.removeItem("access_token");
-		navigate('login');
+	const handleLogOut = () => {
+		LogOutAc(navigate);
 	}
 
 	useEffect(() => {
-		getInfo();
+		fetchUserInfo();
 	}, []);
 
 	return (
@@ -46,17 +38,17 @@ export const Header = () => {
 				<div className="info">{userInfo.user_name}</div>
 			</div>
 			<div className="nav">
-				<PyoNavButton to="/" lmClass="w-full">메인</PyoNavButton>
+				<PyoNavButton to="/" pyoClass="w-full">메인</PyoNavButton>
 			</div>
 			<div className="nav">
 				<div className="title">채팅 리스트</div>
-				<PyoNavButton to="/room/123" lmClass="w-full">임꺽정 방</PyoNavButton>
-				<PyoNavButton to="/room/56712" lmClass='w-full'>홍길동 방</PyoNavButton>
+				<PyoNavButton to="/room/123" pyoClass="w-full">임꺽정 방</PyoNavButton>
+				<PyoNavButton to="/room/56712" pyoClass='w-full'>홍길동 방</PyoNavButton>
 			</div>
 			<div className="nav last">
-				<PyoNavButton to="/login" lmClass="w-full">로그인</PyoNavButton>
-				<PyoNavButton to="/signup" lmClass="w-full">회원가입</PyoNavButton>
-				<PyoNavButton to="/room/aaa" lmClass="w-full" lmEvent={() => {logOutAc()}}>로그아웃</PyoNavButton>
+				<PyoNavButton to="/login" pyoClass="w-full">로그인</PyoNavButton>
+				<PyoNavButton to="/signup" pyoClass="w-full">회원가입</PyoNavButton>
+				<PyoNavButton to="/room/aaa" pyoClass="w-full" pyoEvent={handleLogOut}>로그아웃</PyoNavButton>
 			</div>
 		</div>
 	);
