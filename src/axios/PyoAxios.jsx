@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { LogOutAc } from '@/utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 // Axios 인스턴스 생성
 const PyoAxios = axios.create({
@@ -34,6 +36,9 @@ PyoAxios.interceptors.response.use(
 	(response) => {
 		// 응답 처리 로직 (예: 응답 데이터 가공)
 		// console.log('응답 성공:', response);
+		if(response.data.message === '인증 실패'){
+			LogOutAc(useNavigate());
+		}
 		return response; // 응답 데이터를 그대로 반환
 	},
 	(error) => {
