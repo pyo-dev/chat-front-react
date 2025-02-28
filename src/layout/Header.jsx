@@ -1,8 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserInfo, LogOutAc } from '@/utils/auth';
 import { PyoNavButton } from '@/components/PyoNavButton';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 export const Header = () => {
 	const navigate = useNavigate();
