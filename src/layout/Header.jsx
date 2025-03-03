@@ -41,13 +41,13 @@ export const Header = () => {
 			</div>
 			<div className="nav">
 				<div className="title">채팅 리스트</div>
-				<PyoNavButton to="/room/123" pyoClass="w-full">임꺽정 방</PyoNavButton>
-				<PyoNavButton to="/room/56712" pyoClass='w-full'>홍길동 방</PyoNavButton>
+				<PyoNavButton to="/room/20250208" pyoClass="w-full">임꺽정 방</PyoNavButton>
+				<PyoNavButton to="/room/20250315" pyoClass='w-full'>홍길동 방</PyoNavButton>
 			</div>
 			<div className="nav last">
 				<PyoNavButton to="/login" pyoClass="w-full">로그인</PyoNavButton>
 				<PyoNavButton to="/signup" pyoClass="w-full">회원가입</PyoNavButton>
-				<PyoNavButton to="/room/aaa" pyoClass="w-full" pyoEvent={handleLogOut}>로그아웃</PyoNavButton>
+				<PyoNavButton pyoClass="w-full" pyoEvent={handleLogOut}>로그아웃</PyoNavButton>
 			</div>
 		</div>
 	);
