@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { LoginAc } from '@/utils/auth';
+import { LoginAc } from '@/utils/authUtils';
 import { LayoutDesign } from "@/layout/LayoutDesign";
 import { PyoButton } from "@/components/PyoButton";
 

@@ -1,26 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserInfo, LogOutAc } from '@/utils/auth';
+import { LogOutAc } from '@/utils/authUtils';
 import { PyoNavButton } from '@/components/PyoNavButton';
+import HOOK_PYO_USER_INFO from '@/store/hooks/hookUserInfo';
+
 
 export const Header = () => {
 	const navigate = useNavigate();
-	
-	const [userInfo, setUserInfo] = useState({});
-
-	const fetchUserInfo = async () => {
-		const data = await getUserInfo();
-		if (data) {
-			setUserInfo(data);
-		}
-	};
+	const { getUserInfo, setUserInfo } = HOOK_PYO_USER_INFO();
 
 	const handleLogOut = () => {
 		LogOutAc(navigate);
 	}
 
 	useEffect(() => {
-		fetchUserInfo();
+		setUserInfo();
 	}, []);
 
 	return (
@@ -34,7 +28,7 @@ export const Header = () => {
 							"url(https://dimg.donga.com/wps/NEWS/IMAGE/2009/06/09/7132013.1.jpg)",
 					}}
 				></div>
-				<div className="info">{userInfo.user_name}</div>
+				<div className="info">{getUserInfo.user_name}</div>
 			</div>
 			<div className="nav">
 				<PyoNavButton to="/" pyoClass="w-full">메인</PyoNavButton>

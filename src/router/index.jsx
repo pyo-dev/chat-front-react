@@ -8,12 +8,12 @@ import { RoomDetail } from "@/pages/room/RoomDetail";
 
 // 인증된 사용자만 접근할 수 있는 라우트
 const PrivateRoute = () => {
-	const token = sessionStorage.getItem("access_token");
+	const token = localStorage.getItem("access_token");
 	return token ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 const MyRouter = () => {
-	const token = sessionStorage.getItem("access_token");
+	const token = localStorage.getItem("access_token");
 
 	let element = useRoutes([
 		{

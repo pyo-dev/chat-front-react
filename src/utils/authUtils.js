@@ -14,7 +14,7 @@ export const LoginAc = async ({userData, navigate}) => {
 	await PyoAxios.post('signIn.php', userData)
 	.then((response) => {
 		if(response.data.success){
-			sessionStorage.setItem('access_token', response.data.access_token);
+			localStorage.setItem('access_token', response.data.access_token);
 			navigate('/');
 		} else {
 			alert(response.data.message);
@@ -58,22 +58,7 @@ export const SignUpAc = async ({userData, navigate}) => {
 };
 
 export const LogOutAc = (navigate) => {
-	sessionStorage.removeItem("access_token");
+	localStorage.clear();
+	sessionStorage.clear();
 	navigate('login');
 }
-
-export const getUserInfo = async () => {
-	try {
-		const response = await PyoAxios.get("getUserInfo.php");
-
-		if (response.data.success) {
-			return response.data.data; // 성공 시 데이터 반환
-		} else {
-			alert(response.data.message);
-			return null; // 실패 시 null 반환
-		}
-	} catch (err) {
-		console.error("API 오류:", err);
-		return null; // 오류 발생 시 null 반환
-	}
-};
