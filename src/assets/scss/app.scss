@@ -126,6 +126,10 @@ button{
 		flex-direction: column;
 		gap: 10px;
 		height: 100%;
+		.title-wrap{
+			display: flex;
+			justify-content: space-between;
+		}
 		.list-wrap{
 			overflow: hidden;
 			flex: 1;

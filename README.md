@@ -21,10 +21,14 @@ npm create vite@latest
 	- HTTP 요청을 보내는 라이브러리로, 서버와 데이터를 주고받을 때 사용합니다. REST API 호출 등에서 주로 사용됩니다.
 - react-router-dom `7.1.5`
 	- React 애플리케이션에서 라우팅을 관리하는 라이브러리로, URL에 따라 다양한 페이지를 렌더링할 수 있게 합니다. SPA(Single Page Application)에서 페이지 전환을 관리하는 데 유용합니다.
-- recoil `^0.7.7`
+- recoil `0.7.7`
 	- React 상태 관리를 위한 라이브러리. 전역 상태 관리에 유용.
-- recoil-persist `^5.1.0`
+- recoil-persist `5.1.0`
 	- Recoil 상태를 브라우저 스토리지(localStorage 등)에 저장하고 복원하기 위한 라이브러리.
+- socket.io-client `4.8.1`
+	- 실시간 양방향 통신을 위한 라이브러리로, WebSocket을 기반으로 하며 HTTP 폴링 등의 대체 수단도 지원합니다.
+	- 서버(socket.io 라이브러리)와의 연결을 관리하고, 이벤트 기반 통신을 쉽게 구현할 수 있도록 도와줍니다.
+	- 주로 실시간 채팅, 알림 시스템, 실시간 데이터 업데이트 등의 기능을 개발할 때 사용됩니다.
 
 ## DevDependencies: 개발 환경에서만 사용되는 패키지들입니다.
 ### 기본
